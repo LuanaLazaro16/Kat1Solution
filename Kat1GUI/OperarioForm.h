@@ -479,12 +479,13 @@ namespace Kat1GUI {
 				this->IDEnsayoC,
 					this->IDPlantaC, this->FechaC, this->HoraC, this->ObservacionesC, this->CondicionesC
 			});
-			this->dgvEnsayos->Location = System::Drawing::Point(15, 266);
+			this->dgvEnsayos->Location = System::Drawing::Point(26, 267);
 			this->dgvEnsayos->Name = L"dgvEnsayos";
 			this->dgvEnsayos->RowHeadersWidth = 51;
 			this->dgvEnsayos->RowTemplate->Height = 24;
 			this->dgvEnsayos->Size = System::Drawing::Size(771, 150);
 			this->dgvEnsayos->TabIndex = 18;
+			this->dgvEnsayos->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &OperarioForm::dgvEnsayos_CellContentClick);
 			// 
 			// IDEnsayoC
 			// 
@@ -848,9 +849,10 @@ private: System::Void tabPage2_Click(System::Object^ sender, System::EventArgs^ 
 			   for (int i = 0; i < ensayos->Count; i++) {
 				   dgvEnsayos->Rows->Add(gcnew array<String^>{
 					   "" + ensayos[i]->EnsayoID,
-						   "" + ensayos[i]->Fecha,
-						   ensayos[i]->Hora,
-						   "" + ensayos[i]->Observaciones,
+						   "" + ensayos[i]->PlantaID,
+						   ensayos[i]->Fecha,
+						   "" + ensayos[i]->Hora,
+						   ensayos[i]->Observaciones,
 						   ensayos[i]->Condiciones
 				   }
 				   );
@@ -983,6 +985,9 @@ private: System::Void EliminarEnsayo_Click(System::Object^ sender, System::Event
 	}
 
 }
+private: System::Void dgvEnsayos_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+}
 };
 }
 
+6
