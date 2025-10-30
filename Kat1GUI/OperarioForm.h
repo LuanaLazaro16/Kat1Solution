@@ -22,6 +22,7 @@ namespace Kat1GUI {
 		{
 			InitializeComponent();
 			ShowEnsayo();
+			ShowPlanta();
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -990,4 +991,3 @@ private: System::Void dgvEnsayos_CellContentClick(System::Object^ sender, System
 };
 }
 
-6
