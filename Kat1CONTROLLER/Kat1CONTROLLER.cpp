@@ -164,7 +164,8 @@ int Kat1CONTROLLER::Controller::ModificarRobot(RobotAgronomo^ Robot)
 //usuarios
 int Kat1CONTROLLER::Controller::AgregarUsuario(Usuario^ Usuario) {
 	usuarios->Add(Usuario);
-	Persistance::PersistTextFile("usuarios.txt", usuarios);
+	//Persistance::PersistTextFile("usuarios.txt", usuarios);
+	Persistance::PersistBinaryFile("usuarios.bin", usuarios);
 	return 1;
 }
 
@@ -178,7 +179,8 @@ Usuario^ Kat1CONTROLLER::Controller::ConsultaUsuario(int UserID) {
 }
 
 List<Usuario^>^ Kat1CONTROLLER::Controller::ObtenerUsuario() {
-	usuarios = (List<Usuario^>^)Persistance::LoadUsersFromTextFile("usuarios.txt");
+	//usuarios = (List<Usuario^>^)Persistance::LoadUsersFromTextFile("usuarios.txt");
+	usuarios = (List<Usuario^>^)Persistance::LoadUsersBinaryFile("usuarios.bin");
 	return usuarios;
 }
 int Kat1CONTROLLER::Controller::EliminarUsuario(int UserID)
@@ -187,7 +189,8 @@ int Kat1CONTROLLER::Controller::EliminarUsuario(int UserID)
 	{
 		if (usuarios[i]->UserID == UserID) {
 			usuarios->RemoveAt(i);
-			Persistance::PersistTextFile("usuarios.txt", usuarios);
+			//Persistance::PersistTextFile("usuarios.txt", usuarios);
+			Persistance::PersistBinaryFile("usuarios.bin", usuarios);
 			return 1;
 		}
 	}
@@ -200,7 +203,8 @@ int Kat1CONTROLLER::Controller::ModificarUsuario(Usuario^ Usuario)
 	{
 		if (usuarios[i]->UserID == Usuario->UserID) {
 			usuarios[i] = Usuario;
-			Persistance::PersistTextFile("usuarios.txt", usuarios);
+			//Persistance::PersistTextFile("usuarios.txt", usuarios);
+			Persistance::PersistBinaryFile("usuarios.bin", usuarios);
 			return 1;
 		}
 	}
