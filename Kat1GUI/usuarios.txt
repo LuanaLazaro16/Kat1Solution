@@ -2,4 +2,3 @@
 2|inactivo|Operario|torito@pucp.edu.pe|torito|1234
 3|activo|Operario|gordo@pucp.edu.pe|Gordo|5678
 4|Activo|Operador|gatito@pucp.edu.pe|Gatito|1234
-5|Inactivo|Operador|gzamudio@upc.edu.pe|luana|1234
