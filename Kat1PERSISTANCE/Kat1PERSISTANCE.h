@@ -10,8 +10,7 @@ namespace Kat1PERSISTANCE {
 	{
 	public:
 		
-		static List<Usuario^>^ LoadUsersFromTextFile(String^ fileName);
-		
+		static List<Usuario^>^ LoadUsersFromTextFile(String^ fileName);		
 		static List<RobotAgronomo^>^ LoadRobotsFromTextFile(String^ fileName);
 		static List<Planta^>^ LoadPlantasFromTextFile(String^ fileName);
 		static List<Ensayo^>^ LoadEnsayosFromTextFile(String^ fileName);

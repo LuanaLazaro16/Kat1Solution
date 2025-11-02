@@ -103,8 +103,8 @@ namespace Kat1GUI {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ IDC;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NombreRobot;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Estado;
-	private: System::Windows::Forms::TextBox^ EstadoUsuariotext;
-	private: System::Windows::Forms::TextBox^ RolUsuariotext;
+
+
 	private: System::Windows::Forms::TextBox^ EstadoRobottext;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ button1;
@@ -112,6 +112,10 @@ namespace Kat1GUI {
 	private: System::Windows::Forms::Button^ button3;
 	private: System::Windows::Forms::Label^ labelTituloPlantas;
 	private: System::Windows::Forms::Label^ label1;
+
+
+	private: System::Windows::Forms::TextBox^ EstadoUsuariotext;
+	private: System::Windows::Forms::TextBox^ RolUsuariotext;
 
 
 
@@ -677,8 +681,10 @@ private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e
 		String^ Username = UserNameText->Text->Trim();
 		String^ Password = PasswordText->Text->Trim();
 		String^ Email = EmailUserText->Text->Trim();
+
 		String^ Estado = EstadoUsuariotext->Text->Trim();
 		String^ Rol = RolUsuariotext->Text->Trim();
+
 		//validacion de ID
 		if (UserId== 0) {
 			MessageBox::Show("Debe insertar un ID para el Usuario");
