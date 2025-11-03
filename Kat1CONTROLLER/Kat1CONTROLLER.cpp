@@ -65,7 +65,7 @@ int Kat1CONTROLLER::Controller::AgregarPlanta(Planta^ Planta) {
 		throw ex;
 	}
 	return 0;
-	
+
 
 }
 
@@ -111,7 +111,7 @@ int Kat1CONTROLLER::Controller::ModificarPlanta(Planta^ Planta)
 //robot
 
 int Kat1CONTROLLER::Controller::AgregarRobot(RobotAgronomo^ Robot) {
-	
+
 	try {
 		robots->Add(Robot);
 		Persistance::PersistRobotsTextFile("robots.txt", robots);
@@ -164,13 +164,12 @@ int Kat1CONTROLLER::Controller::ModificarRobot(RobotAgronomo^ Robot)
 //usuarios
 int Kat1CONTROLLER::Controller::AgregarUsuario(Usuario^ Usuario) {
 	usuarios->Add(Usuario);
-	//Persistance::PersistTextFile("usuarios.txt", usuarios);
-	Persistance::PersistBinaryFile("usuarios.bin", usuarios);
+	Persistance::PersistTextFile("usuarios.txt", usuarios);
 	return 1;
 }
 
 Usuario^ Kat1CONTROLLER::Controller::ConsultaUsuario(int UserID) {
-	for each (Usuario^ usuario in usuarios) {
+	for each (Usuario ^ usuario in usuarios) {
 		if (usuario->UserID == UserID) {
 			return usuario;
 		}
@@ -179,8 +178,7 @@ Usuario^ Kat1CONTROLLER::Controller::ConsultaUsuario(int UserID) {
 }
 
 List<Usuario^>^ Kat1CONTROLLER::Controller::ObtenerUsuario() {
-	//usuarios = (List<Usuario^>^)Persistance::LoadUsersFromTextFile("usuarios.txt");
-	usuarios = (List<Usuario^>^)Persistance::LoadUsersBinaryFile("usuarios.bin");
+	usuarios = (List<Usuario^>^)Persistance::LoadUsersFromTextFile("usuarios.txt");
 	return usuarios;
 }
 int Kat1CONTROLLER::Controller::EliminarUsuario(int UserID)
@@ -189,8 +187,7 @@ int Kat1CONTROLLER::Controller::EliminarUsuario(int UserID)
 	{
 		if (usuarios[i]->UserID == UserID) {
 			usuarios->RemoveAt(i);
-			//Persistance::PersistTextFile("usuarios.txt", usuarios);
-			Persistance::PersistBinaryFile("usuarios.bin", usuarios);
+			Persistance::PersistTextFile("usuarios.txt", usuarios);
 			return 1;
 		}
 	}
@@ -203,11 +200,9 @@ int Kat1CONTROLLER::Controller::ModificarUsuario(Usuario^ Usuario)
 	{
 		if (usuarios[i]->UserID == Usuario->UserID) {
 			usuarios[i] = Usuario;
-			//Persistance::PersistTextFile("usuarios.txt", usuarios);
-			Persistance::PersistBinaryFile("usuarios.bin", usuarios);
+			Persistance::PersistTextFile("usuarios.txt", usuarios);
 			return 1;
 		}
 	}
 	return 0;
 }
-

@@ -2,10 +2,9 @@
 
 #include "Kat1PERSISTANCE.h"
 
-using namespace System::Runtime::Serialization::Formatters::Binary;
+
 using namespace System::IO;
 
-/*
 void Kat1PERSISTANCE::Persistance::PersistTextFile(String^ fileName,
     List<Usuario^>^ usuarios)
 {
@@ -33,31 +32,9 @@ void Kat1PERSISTANCE::Persistance::PersistTextFile(String^ fileName,
         if (file != nullptr) file->Close();
     }
 }
-*/
 
 
-
-void Kat1PERSISTANCE::Persistance::PersistBinaryFile(String^ fileName, List<Usuario^>^ usuarios)
-{
-    FileStream^ file;
-
-	BinaryFormatter^ formatter = gcnew BinaryFormatter();
-    try {
-		file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
-		formatter->Serialize(file, usuarios);
-    }
-    catch (Exception^ ex) {
-        throw ex;
-    }
-    finally {
-        if (file != nullptr) {
-            file->Close();
-        }
-        delete file;
-    }
-}
-
-void Kat1PERSISTANCE::Persistance::PersistRobotsTextFile(String^ fileName,
+void Kat1PERSISTANCE::Persistance::PersistRobotsTextFile(String^ fileName, 
     List<RobotAgronomo^>^ robots)
 {
     FileStream^ file = nullptr;
@@ -135,7 +112,6 @@ void Kat1PERSISTANCE::Persistance::PersistEnsayosTextFile(String^ fileName, List
     }
 }
 
-/*
 List<Usuario^>^ Kat1PERSISTANCE::Persistance::LoadUsersFromTextFile(String^ fileName)
 {
     FileStream^ file;
@@ -148,11 +124,11 @@ List<Usuario^>^ Kat1PERSISTANCE::Persistance::LoadUsersFromTextFile(String^ file
             String^ line = reader->ReadLine();
             array<String^>^ record = line->Split('|');
             if (record->Length == 6) {
-                Usuario^ usuario = gcnew Usuario( Int32::Parse(record[0]),
-                    record[1],
-                    record[2],
-                    record[3],
-                    record[4],
+                Usuario^ usuario = gcnew Usuario( Int32::Parse(record[0]), 
+                    record[1],  
+                    record[2], 
+                    record[3], 
+                    record[4], 
                     record[5]);
                 result->Add(usuario);
             }
@@ -167,33 +143,6 @@ List<Usuario^>^ Kat1PERSISTANCE::Persistance::LoadUsersFromTextFile(String^ file
     }
     return result;
 }
-*/
-
-
-List<Usuario^>^ Kat1PERSISTANCE::Persistance::LoadUsersBinaryFile(String^ fileName)
-{
-    FileStream^ file ;
-    List<Usuario^>^ result ;
-    BinaryFormatter^ formatter;
-    try {
-        if (File::Exists(fileName)) {
-            file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
-            formatter = gcnew BinaryFormatter();
-            result = (List<Usuario^>^)formatter->Deserialize(file);  // Realizando el cast a List<Usuario^>
-        }
-    }
-    catch (Exception^ ex) {
-        throw ex;
-    }
-    finally {
-        if (file != nullptr) {
-            file->Close();
-        }
-        delete file;
-    }
-    return result;
-}
-
 
 List<RobotAgronomo^>^ Kat1PERSISTANCE::Persistance::LoadRobotsFromTextFile(String^ fileName)
 {
