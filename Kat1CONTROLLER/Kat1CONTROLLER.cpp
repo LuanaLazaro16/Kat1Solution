@@ -65,7 +65,7 @@ int Kat1CONTROLLER::Controller::AgregarPlanta(Planta^ Planta) {
 		throw ex;
 	}
 	return 0;
-	
+
 
 }
 
@@ -111,7 +111,7 @@ int Kat1CONTROLLER::Controller::ModificarPlanta(Planta^ Planta)
 //robot
 
 int Kat1CONTROLLER::Controller::AgregarRobot(RobotAgronomo^ Robot) {
-	
+
 	try {
 		robots->Add(Robot);
 		Persistance::PersistRobotsTextFile("robots.txt", robots);
@@ -169,7 +169,7 @@ int Kat1CONTROLLER::Controller::AgregarUsuario(Usuario^ Usuario) {
 }
 
 Usuario^ Kat1CONTROLLER::Controller::ConsultaUsuario(int UserID) {
-	for each (Usuario^ usuario in usuarios) {
+	for each (Usuario ^ usuario in usuarios) {
 		if (usuario->UserID == UserID) {
 			return usuario;
 		}
@@ -206,4 +206,3 @@ int Kat1CONTROLLER::Controller::ModificarUsuario(Usuario^ Usuario)
 	}
 	return 0;
 }
-
